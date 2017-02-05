@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable #:recoverable,
 
   has_many :tweets
+  has_many :spaces
 end
