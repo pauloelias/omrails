@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav"
             <!-- Login Buttons -->
             <% if user_signed_in? %>
-              <li class="nav-item pull-md-right"><%= link_to "Log out", signout_path, method: :delete, class: "btn" %></li>  
+              <li class="nav-item pull-md-right"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link" %></li>  
             <% else %>
               <li class="nav-item float-md-right"><%= link_to "Sign in", signin_path, class: "nav-link" %></li>>
               <li class="nav-item float-md-right"><%= link_to "Sign up", signup_path, class: "btn btn-primary" %></li>
