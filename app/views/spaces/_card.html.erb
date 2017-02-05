@@ -1,0 +1,22 @@
+<div class="col-sm-4">
+	<div class="card">
+	  <!-- <img class="card-img-top" src="http://placehold.it/200x100/cccccc/cccccc" alt="Card image cap"> -->
+	  <div class="card-header">
+	    Featured Card
+	  </div>
+	  <div class="card-block">
+	    <h3 class="card-title"><%= link_to space.title, space %></h3>
+	    <h4 class="card-subtitle mb-2 text-muted">User: <%= space.user.email %></h4>
+	    <p class="card-text"><%= space.desscription %></p>
+
+	    <!-- <p>
+		  <strong>Rating:</strong>
+		  <%= space.rating %>
+		</p> -->
+
+		<% if space.user == current_user %>
+		 <footer><%= link_to 'Edit', edit_space_path(space), :class => "card-link" %></footer>
+		<% end %>
+	  </div>
+	</div>
+</div>
