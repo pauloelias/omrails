@@ -1,28 +1,28 @@
 <div class="container"
 
-<p>
-  <strong>Title:</strong>
-  <%= @space.title %>
-</p>
+	<p>
+	  <strong>Title:</strong>
+	  <%= @space.title %>
+	</p>
 
-<p>
-  <strong>Desscription:</strong>
-  <%= @space.desscription %>
-</p>
+	<p>
+	  <strong>Desscription:</strong>
+	  <%= @space.desscription %>
+	</p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @space.rating %>
-</p>
+	<p>
+	  <strong>Rating:</strong>
+	  <%= @space.rating %>
+	</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @space.user.email %>
-</p>
+	<p>
+	  <strong>User:</strong>
+	  <%= @space.user.email %>
+	</p>
 
-<% if @space.user == current_user %>
-	<%= link_to 'Edit', edit_space_path(@space) %> |
-<% end %>
-<%= link_to 'Back', spaces_path %>
+	<% if @space.user == current_user %>
+		<%= link_to 'Edit', edit_space_path(@space) %> |
+	<% end %>
+	<%= link_to 'Back', spaces_path %>
 
 </div>

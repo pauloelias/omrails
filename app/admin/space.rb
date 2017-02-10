@@ -13,6 +13,6 @@ ActiveAdmin.register Space do
 #   permitted
 # end
 
-  permit_params :user, :title, :desscription, :rating
+  permit_params :user, :title, :desscription, :rating, :username
 
 end
