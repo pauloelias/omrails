@@ -1,12 +1,10 @@
 <div class="container">
 
-  <h1>Tweets</h1>
+	<h1><%= @user.username %></h1>
 
-  <div class="container">
-    <h4>Your Account <small><%= link_to current_user.username, user_path(current_user.username) %></small></h4>
-  </div>
+	<p><%= @user.name %></p>
 
-  <table class="table">
+	<table class="table">
     <thead>
       <tr>
         <th>User</th>
@@ -30,9 +28,4 @@
     </tbody>
   </table>
 
-  <br>
-
-  <% if user_signed_in? %>
-    <%= link_to 'New Tweet', new_tweet_path %>
-  <% end %>
 </div>
