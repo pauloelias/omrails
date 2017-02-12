@@ -1,6 +1,11 @@
 <div class="container">
 
   <p>
+    <strong>Image:</strong>
+    <img src="<%= @tweet.image %>">
+  </p>  
+
+  <p>
     <strong>User:</strong>
     <%= link_to @tweet.user.username, user_path(@tweet.user.username) %>
   </p>
