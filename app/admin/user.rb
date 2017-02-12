@@ -13,12 +13,14 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-  permit_params :email, :admin, :username, :name
+  permit_params :email, :admin, :username, :name, :password, :password_confirmation
 
   form do |f|
     f.semantic_errors
     f.inputs do
       f.input :username
+      f.input :password
+      f.input :password_confirmation
       f.input :name
       f.input :email
       f.input :admin

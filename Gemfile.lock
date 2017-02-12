@@ -1,6 +1,14 @@
 GIT
+  remote: git://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
+GIT
   remote: https://github.com/activeadmin/inherited_resources
-  revision: 3efcc730d2390b7f9c7c2bd69a638e92d8137d33
+  revision: c8ad6a861288b91abdf8745c005016cb5ff1d4ad
   specs:
     inherited_resources (1.7.0)
       actionpack (>= 3.2, < 5.1)
@@ -221,6 +229,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre4)
+  acts_as_follower!
   bootstrap (~> 4.0.0.alpha5)
   byebug
   coffee-rails (~> 4.2)

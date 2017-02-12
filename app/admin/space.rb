@@ -13,6 +13,25 @@ ActiveAdmin.register Space do
 #   permitted
 # end
 
-  permit_params :user, :title, :desscription, :rating, :username
+  permit_params :user, :title, :desscription, :rating
 
+  form do |f|
+    f.semantic_errors
+    f.inputs do
+      f.input :user
+      f.input :title
+      f.input :desscription
+      f.input :rating
+    end
+    f.actions
+  end
+
+  index do
+    id_column
+    column :user
+    column :title
+    column :desscription
+    column :rating
+    actions
+  end
 end

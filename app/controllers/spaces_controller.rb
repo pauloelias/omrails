@@ -8,7 +8,7 @@ class SpacesController < ApplicationController
 
   # GET /spaces/1
   def show
-    @space = Spaces.find(params[:id])
+    @space = Space.find(params[:id])
   end
 
   # GET /spaces/new

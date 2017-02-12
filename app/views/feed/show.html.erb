@@ -1,17 +1,12 @@
 <div class="container">
 
-	<div class="container">
-    <h1><%= @user.name %></h1>
+  <h1>Tweets</h1>
 
-    <p><%= @user.username %></p>
-    <% if current_user.following?(@user) %>
-      <p><%= link_to "Unfollow", unfollow_user_path(@user.username), method: :delete %></p>
-    <% else %>
-      <p><%= link_to "Follow", follow_user_path(@user.username), method: :post %></p>
-    <% end %>
+  <div class="container">
+    <h4>Your Account <small><%= link_to current_user.username, user_path(current_user.username) %></small></h4>
   </div>
 
-	<table class="table">
+  <table class="table">
     <thead>
       <tr>
         <th>User</th>
@@ -23,7 +18,7 @@
     <tbody>
       <% @tweets.each do |tweet| %>
         <tr>
-          <td><%= tweet.user.username %></td>
+          <td><%= link_to tweet.user.username, user_path(tweet.user.username) %></td>
           <td><%= tweet.content %></td>
           <td><%= link_to 'Show', tweet %></td>
           <% if tweet.user == current_user %>
@@ -35,4 +30,9 @@
     </tbody>
   </table>
 
+  <br>
+
+  <% if user_signed_in? %>
+    <%= link_to 'New Tweet', new_tweet_path %>
+  <% end %>
 </div>

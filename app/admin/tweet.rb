@@ -13,6 +13,22 @@ ActiveAdmin.register Tweet do
 #   permitted
 # end
 
-  permit_params :user, :content, :username
+  permit_params :user, :content
+
+  form do |f|
+    f.semantic_errors
+    f.inputs do
+      f.input :user
+      f.input :content
+    end
+    f.actions
+  end
+
+  index do
+    id_column
+    column :user
+    column :content
+    actions
+  end
 
 end

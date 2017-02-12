@@ -19,7 +19,7 @@
           <td><%= space.title %></td>
           <td><%= space.desscription %></td>
           <td><%= space.rating %></td>
-          <td><%= space.user.email %></td>
+          <td><%= space.user.username %></td>
           <td><%= link_to 'Show', space %></td>
           <% if space.user == current_user %>
             <td><%= link_to 'Edit', edit_space_path(space) %></td>
