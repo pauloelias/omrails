@@ -25,9 +25,9 @@
     <div class="card-footer text-muted">
       <% if user_signed_in? %>
         <% if current_user.voted_up_on? space %> 
-          <%= link_to 'Unvote', unvote_space_path(space), method: :delete, class: 'card-link' %>
+          <%= link_to 'Unvote', unvote_space_path(space), method: :delete, class: 'card-link btn btn-secondary' %>
         <% else %>
-          <%= link_to 'Vote', vote_space_path(space), method: :post, class: 'card-link' %>
+          <%= link_to 'Vote', vote_space_path(space), method: :post, class: 'card-link btn btn-secondary' %>
         <% end %>
       <% end %>
       <% if space.user == current_user %>
