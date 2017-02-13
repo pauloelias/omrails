@@ -1,9 +1,9 @@
 <div class="card card-block">
   <h2 class="card-title">
-    <% if user.avatar.present? %>
-      <%= image_tag user.avatar.url(:thumb), :class => "rounded float-right" %>
-    <% end %>
     <% if user_signed_in? %>
+      <% if user.avatar.present? %>
+        <%= image_tag user.avatar.url(:thumb), :class => "rounded float-right" %>
+      <% end %>
       <%= link_to user.name, '/feed' %>
     <% else %>
       <%= user.name %>
