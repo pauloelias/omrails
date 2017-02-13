@@ -1,48 +1,12 @@
-<div class="container">
-
-  <h1>Spaces</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Desscription</th>
-        <th>Rating</th>
-        <th>User</th>
-        <th colspan="4"></th>
-      </tr>
-    </thead>
-
-    <tbody>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render 'users/card', user: @user %>
+    </div>
+    <div class="col-md-8">
       <% @spaces.each do |space| %>
-        <tr>
-          <td><%= space.votes_for.up.size %></td>
-          <td><%= space.title %></td>
-          <td><%= space.desscription %></td>
-          <td><%= space.rating %></td>
-          <td><%= space.user.username %></td>
-          <td><%= link_to 'Show', space %></td>
-          <% if user_signed_in? %>
-            <% if current_user.voted_up_on? space %> 
-              <td><%= link_to 'Unvote', unvote_space_path(space), method: :delete %></td>
-            <% else %>
-              <td><%= link_to 'Vote', vote_space_path(space), method: :post %></td>
-            <% end %>
-          <% end %>
-          <% if space.user == current_user %>
-            <td><%= link_to 'Edit', edit_space_path(space) %></td>
-            <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
+        <%= render 'spaces/card', space: space %>
       <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <% if user_signed_in? %>
-    <%= link_to 'New Space', new_space_path %>
-  <% end %>
-
+    </div>
+  </div>
 </div>

@@ -1,0 +1,30 @@
+<div class="card card-block">
+  <h2 class="card-title">
+    <% if user.avatar.present? %>
+      <%= image_tag user.avatar.url(:thumb), :class => "rounded float-right" %>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to user.name, '/feed' %>
+    <% else %>
+      <%= user.name %>
+    <% end %>
+    <br>
+    <%= link_to user_path(user.username) do %>
+      <small><%= user.username %></small>
+    <% end %>
+  </h2>
+  <% if user_signed_in? %>
+    <% if current_user.following?(user) %>
+      <p><%= link_to "Unfollow", unfollow_user_path(user.username), method: :delete %></p>
+    <% else %>
+      <p><%= link_to "Follow", follow_user_path(user.username), method: :post %></p>
+    <% end %>
+    <p class="text-center">
+      <%= link_to 'New Space', new_space_path, class: "btn btn-primary btn-sm active" %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-sm active" %> | <%= link_to "Sign in", signin_path, class: "btn btn-primary btn-sm active" %>
+    </p>
+  <% end %>
+</div>

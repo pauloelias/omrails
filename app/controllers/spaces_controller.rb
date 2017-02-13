@@ -3,12 +3,14 @@ class SpacesController < ApplicationController
 
   # GET /spaces
   def index
-    @spaces = Space.all
+    @spaces = Space.order(created_at: :desc)
+    @user = User.find_by(username: current_user.username)
   end
 
   # GET /spaces/1
   def show
     @space = Space.find(params[:id])
+    @user = User.find_by(username: current_user.username)
   end
 
   # GET /spaces/new

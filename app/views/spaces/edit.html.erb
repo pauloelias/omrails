@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container mt-3">
+  <div class="row">
+    <h1>Editing Space</h1>
+  </div>
 
-	<h1>Editing Space</h1>
+  <%= render 'form', space: @space %>
 
-	<%= render 'form', space: @space %>
-
-	<%= link_to 'Show', @space %> |
-	<%= link_to 'Back', spaces_path %>
-
+  <div class="row text-center">
+    <%= link_to 'Show', @space, class: "btn btn-link btn-sm" %>
+  </div>
 </div>

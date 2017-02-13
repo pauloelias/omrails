@@ -1,13 +1,21 @@
 <div class="card u-mb-m" style="width:100%;">
   <div class="card-header">
     <% if space.user.avatar.present? %>
-      <%= image_tag space.user.avatar.url(:thumb), :class => "rounded float-right", :style => "width:50px;" %>
+      <%= link_to user_path(space.user.username) do %>
+        <%= image_tag space.user.avatar.url(:thumb), :class => "rounded float-right", :style => "width:50px;" %>
+      <% end %>
     <% end %>
     <%= link_to space.user.username, user_path(space.user.username) %><br />
-    <small><%= time_ago_in_words(space.created_at) %> ago</small>
+    <%= link_to space_path(space), class: "text-muted" do %> 
+      <small>
+        <%= time_ago_in_words(space.created_at) %> ago
+      </small>
+    <% end %>
   </div>
   <% if space.image.present? %>
-    <%= image_tag space.image.url(:medium), :class => "card-img-top img-fluid" %>
+    <%= link_to space_path(space), class: 'block' do %>
+      <%= image_tag space.image.url, :class => "card-img-top img-cover" %>
+    <% end %>
   <% end %>
   <div class="card-block">
     <p class="card-text">

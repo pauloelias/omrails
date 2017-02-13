@@ -1,35 +1,9 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-4">
-      <div class="card card-block">
-        <h2 class="card-title">
-          <%= @user.name %>
-        </h2>
-        <p class="card-text">
-          <%= @user.username %> 
-          <% if @user.avatar.present? %>
-            <%= image_tag @user.avatar.url(:thumb), :class => "rounded float-right" %>
-          <% end %>
-        </p>
-        <% if user_signed_in? %>
-          <% if current_user.following?(@user) %>
-            <p><%= link_to "Unfollow", unfollow_user_path(@user.username), method: :delete %></p>
-          <% else %>
-            <p><%= link_to "Follow", follow_user_path(@user.username), method: :post %></p>
-          <% end %>
-        <% else %>
-          <p>
-            <%= link_to "Sign up now!", signup_path %> || <%= link_to "Sign in", signin_path %>
-          </p>
-        <% end %>
-      </div>
+      <%= render 'users/card', user: @user %>
     </div>
     <div class="col-md-8">
-      <% if user_signed_in? %>
-        <p class="text-center">
-          <%= link_to 'New Space', new_space_path, class: "btn btn-primary btn-lg active" %>
-        </p>
-      <% end %>
       <% @spaces.each do |space| %>
         <%= render 'spaces/card', space: space %>
       <% end %>

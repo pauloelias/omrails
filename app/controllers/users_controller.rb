@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username:params[:username])
-    @tweets = @user.tweets
-    @spaces = @user.spaces
+    @tweets = @user.tweets.order(created_at: :desc)
+    @spaces = @user.spaces.order(created_at: :desc)
   end
 
   private
