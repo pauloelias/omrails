@@ -10,7 +10,9 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   def show
     @space = Space.find(params[:id])
-    @user = User.find_by(username: current_user.username)
+    if user_signed_in?
+      @user = User.find_by(username: current_user.username)
+    end
   end
 
   # GET /spaces/new

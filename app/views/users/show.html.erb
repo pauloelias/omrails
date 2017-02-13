@@ -1,7 +1,9 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-4">
-      <%= render 'users/card', user: @user %>
+      <% if @user %>
+        <%= render 'users/card', user: @user %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <% @spaces.each do |space| %>

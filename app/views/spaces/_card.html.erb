@@ -22,17 +22,17 @@
       <%= space.desscription %>
     </p>
   </div>
-    <div class="card-footer text-muted">
-      <% if user_signed_in? %>
-        <% if current_user.voted_up_on? space %> 
-          <%= link_to 'Unvote', unvote_space_path(space), method: :delete, class: 'card-link btn btn-secondary' %>
-        <% else %>
-          <%= link_to 'Vote', vote_space_path(space), method: :post, class: 'card-link btn btn-secondary' %>
-        <% end %>
+  <% if user_signed_in? %>
+    <div class="card-footer text-muted">      
+      <% if current_user.voted_up_on? space %> 
+        <%= link_to 'Unvote', unvote_space_path(space), method: :delete, class: 'card-link btn btn-secondary' %>
+      <% else %>
+        <%= link_to 'Vote', vote_space_path(space), method: :post, class: 'card-link btn btn-secondary' %>
       <% end %>
       <% if space.user == current_user %>
         <%= link_to 'Edit', edit_space_path(space), class: 'card-link' %></td>
         <%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %>
       <% end%>
     </div>
+  <% end %>
 </div>
