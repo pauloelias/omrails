@@ -4,7 +4,9 @@ class SpacesController < ApplicationController
   # GET /spaces
   def index
     @spaces = Space.order(created_at: :desc)
-    @user = User.find_by(username: current_user.username)
+    if user_signed_in?
+      @user = User.find_by(username: current_user.username)
+    end
   end
 
   # GET /spaces/1
