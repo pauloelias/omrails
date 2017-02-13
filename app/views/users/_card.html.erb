@@ -1,30 +1,33 @@
 <div class="card card-block">
   <h2 class="card-title">
-    <% if user_signed_in? %>
-      <% if user.avatar.present? %>
-        <%= image_tag user.avatar.url(:thumb), :class => "rounded float-right" %>
-      <% end %>
-      <%= link_to user.name, '/feed' %>
-    <% else %>
-      <%= user.name %>
+    <% if user.avatar.present? %>
+      <%= image_tag user.avatar.url(:thumb), :class => "rounded float-right" %>
     <% end %>
-    <br>
+    <%= user.name %>
+    <br />
     <%= link_to user_path(user.username) do %>
       <small><%= user.username %></small>
     <% end %>
-  </h2>
-  <% if user_signed_in? %>
-    <% if current_user.following?(user) %>
-      <p><%= link_to "Unfollow", unfollow_user_path(user.username), method: :delete %></p>
-    <% else %>
-      <p><%= link_to "Follow", follow_user_path(user.username), method: :post %></p>
+    <br />
+    <% if user_signed_in? %>
+      <%= link_to feed_path do %>
+        <small>feed</small>
+      <% end %>
     <% end %>
-    <p class="text-center">
+  </h2>
+  <div class="card-block">
+    <% if user_signed_in? %>
+      <% if current_user.following?(user) %>
+        <%= link_to "Unfollow", unfollow_user_path(user.username), method: :delete, class: "btn btn-secondary btn-sm" %>
+      <% else %>
+        <%= link_to "Follow", follow_user_path(user.username), method: :post, class: "btn btn-success btn-sm" %>
+      <% end %>
       <%= link_to 'New Space', new_space_path, class: "btn btn-info btn-sm" %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-sm active" %> | <%= link_to "Sign in", signin_path, class: "btn btn-primary btn-sm active" %>
-    </p>
-  <% end %>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-link btn-sm" %>
+    <% else %>
+      <p>
+        <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-sm active" %> <%= link_to "Sign in", signin_path, class: "btn btn-primary btn-sm active" %>
+      </p>
+    <% end %>
+  </div>
 </div>
