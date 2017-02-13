@@ -13,7 +13,7 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-  permit_params :email, :admin, :username, :name, :password, :password_confirmation
+  permit_params :email, :admin, :username, :name, :password, :password_confirmation, :avatar
 
   form do |f|
     f.semantic_errors
@@ -23,6 +23,7 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :name
       f.input :email
+      f.input :avatar
       f.input :admin
     end
     f.actions

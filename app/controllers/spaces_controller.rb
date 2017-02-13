@@ -52,6 +52,6 @@ class SpacesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:title, :desscription, :rating, :user_id)
+      params.require(:space).permit(:title, :desscription, :rating, :user_id, :image)
     end
 end

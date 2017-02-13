@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <% @spaces_user.each do |space| %>
+        <% @spaces.each do |space| %>
           <%= render 'spaces/card', space: space %>
         <% end %>
       </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="container">
         <div class="row">
-          <% @spaces_all.each do |space| %>
+          <% @spaces.each do |space| %>
             <%= render 'spaces/card', space: space %>
           <% end %>
         </div>

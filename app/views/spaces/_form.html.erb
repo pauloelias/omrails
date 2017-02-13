@@ -22,6 +22,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :rating %>
     <%= f.number_field :rating %>
   </div>

@@ -1,38 +1,38 @@
-<div class="container">
-
-  <h1>Tweets</h1>
-
-  <div class="container">
-    <h4>Your Account <small><%= link_to current_user.username, user_path(current_user.username) %></small></h4>
-  </div>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Content</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tweets.each do |tweet| %>
-        <tr>
-          <td><%= link_to tweet.user.username, user_path(tweet.user.username) %></td>
-          <td><%= tweet.content %></td>
-          <td><%= link_to 'Show', tweet %></td>
-          <% if tweet.user == current_user %>
-            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end%>
-        </tr>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-block">
+        <h2 class="card-title">
+          <%= @user.name %>
+        </h2>
+        <p class="card-text">
+          <%= @user.username %> 
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar.url(:thumb), :class => "rounded float-right" %>
+          <% end %>
+        </p>
+        <% if user_signed_in? %>
+          <% if current_user.following?(@user) %>
+            <p><%= link_to "Unfollow", unfollow_user_path(@user.username), method: :delete %></p>
+          <% else %>
+            <p><%= link_to "Follow", follow_user_path(@user.username), method: :post %></p>
+          <% end %>
+        <% else %>
+          <p>
+            <%= link_to "Sign up now!", signup_path %> || <%= link_to "Sign in", signin_path %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <% if user_signed_in? %>
+        <p class="text-center">
+          <%= link_to 'New Space', new_space_path, class: "btn btn-primary btn-lg active" %>
+        </p>
       <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <% if user_signed_in? %>
-    <%= link_to 'New Tweet', new_tweet_path %>
-  <% end %>
+      <% @spaces.each do |space| %>
+        <%= render 'spaces/card', space: space %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   def home
   	if current_user
-  		@spaces_user = current_user.spaces.all
+  		@spaces = current_user.spaces.order(created_at: :desc)
   	else
-  		@spaces_all = Space.all
+  		@spaces = Space.order(created_at: :desc)
   	end
   end
 end

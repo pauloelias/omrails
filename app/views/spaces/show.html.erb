@@ -6,6 +6,13 @@
 	</p>
 
 	<p>
+	  <strong>Image:</strong>
+	  <% if @space.image.present? %>
+        <%= image_tag @space.image.url(:thumb), :class => "card-img-top" %>
+      <% end %>
+	</p>
+
+	<p>
 	  <strong>Desscription:</strong>
 	  <%= @space.desscription %>
 	</p>

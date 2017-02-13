@@ -1,22 +1,23 @@
-<div class="col-sm-4">
-	<div class="card">
-	  <!-- <img class="card-img-top" src="http://placehold.it/200x100/cccccc/cccccc" alt="Card image cap"> -->
-	  <div class="card-header">
-	    Featured Space
-	  </div>
-	  <div class="card-block">
-	    <h3 class="card-title"><%= link_to space.title, space %></h3>
-	    <h4 class="card-subtitle mb-2 text-muted">User: <%= space.user.username %></h4>
-	    <p class="card-text"><%= space.desscription %></p>
-
-	    <!-- <p>
-		  <strong>Rating:</strong>
-		  <%= space.rating %>
-		</p> -->
-
-		<% if space.user == current_user %>
-		 <footer><%= link_to 'Edit', edit_space_path(space), :class => "card-link" %></footer>
-		<% end %>
-	  </div>
-	</div>
+<div class="card u-mb-m" style="width:100%;">
+  <div class="card-header">
+    <% if space.user.avatar.present? %>
+      <%= image_tag space.user.avatar.url(:thumb), :class => "rounded float-right", :style => "width:50px;" %>
+    <% end %>
+    <%= link_to space.user.username, user_path(space.user.username) %><br />
+    <small><%= time_ago_in_words(space.created_at) %> ago</small>
+  </div>
+  <% if space.image.present? %>
+    <%= image_tag space.image.url(:medium), :class => "card-img-top img-fluid" %>
+  <% end %>
+  <div class="card-block">
+    <p class="card-text">
+      <%= space.desscription %>
+    </p>
+  </div>
+  <% if space.user == current_user %>
+    <div class="card-footer text-muted">
+      <%= link_to 'Edit', edit_space_path(space), class: 'card-link' %></td>
+      <%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %>
+    </div>
+  <% end%>
 </div>
